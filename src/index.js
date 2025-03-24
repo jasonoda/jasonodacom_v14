@@ -1,4 +1,6 @@
 import './main.css';
+import './styles2.css';
+import './page.css';
 import assets from '../dist/assets.json';
 
 import Engine from "./engine.js"; 

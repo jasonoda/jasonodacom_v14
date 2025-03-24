@@ -8,6 +8,7 @@ export class Scene {
   
       this.e=e;
 
+
     }
   
     buildScene(){
@@ -73,348 +74,184 @@ export class Scene {
       //
 
       this.mainDiv = document.getElementById("mainDiv");
-      this.reel = document.getElementById("reel"); this.showReel = true;
 
+      //---------------------------------------------------------------------------------------------------------------------------------------
+      
       this.heightSetter = document.createElement("div");
-      this.heightSetter.style.height = "20000px";
-      // this.heightSetter.style.border = "1px solid red";
+      this.heightSetter.style.height = "3000px";
       this.heightSetter.style.width = "110px";
       document.body.appendChild(this.heightSetter);
 
-      //
-
-      this.myScroll = 0;
+      //---------------------------------------------------------------------------------------------------------------------------------------
       
-      //
-
-      this.cursor = document.getElementById("cursor");
-      this.cursor2 = document.getElementById("cursor2");
-
-      this.cursorX = 0;
-      this.cursorY = 0;
-      this.targetCursorX = 0;
-      this.targetCursorY = 0;
-
-      this.cursorX2 = 0;
-      this.cursorY2 = 0;
-      this.targetCursorX2 = 0;
-      this.targetCursorY2 = 0;
-
-      document.addEventListener("mousemove", (event) => {
-          this.targetCursorX = event.clientX - this.cursor.offsetWidth/2;
-          this.targetCursorY = event.clientY - this.cursor.offsetHeight/2 -80;
-          this.targetCursorX2 = event.clientX - this.cursor2.offsetWidth/2;
-          this.targetCursorY2 = event.clientY - this.cursor2.offsetHeight/2 -80;
-      });
-
-      this.fadeItems = [];
-
-      //--------------------------------------------------------------------------------------------------------------
-
-      this.ob = this.createTitle("WAKING", this.mainDiv);  this.fadeItems.push(this.ob); this.ob.id = "wakingSection";
-
-      this.createNewLine(this.mainDiv);
-
-      this.ob = this.createDisc("Waking is an emotional action / adventure indie game funded by Microsoft via the ID@Xbox program.", this.mainDiv);  this.fadeItems.push(this.ob);
-
-      this.createNewLine(this.mainDiv);
-
-      this.createYoutubeEmbed("https://www.youtube.com/embed/24KuXRQPt6A", this.mainDiv); this.fadeItems.push(this.ob);
-
-      this.createSpacer(30 , this.mainDiv);
-
-      this.ob = this.createIcon("./src/images/symbols/tri.svg", this.mainDiv); this.fadeItems.push(this.ob);
-      // this.ob = this.createDisc("Unity - Steam and Xbox.", this.mainDiv);  this.fadeItems.push(this.ob);
-
-      this.createSpacer(36 , this.mainDiv);
-
-      this.createNewLine(this.mainDiv);
-
-      this.ob = new ImageOb("./src/images/waking/gif1small.gif", 496, 278, this.mainDiv); this.fadeItems.push(this.ob.container);
-      this.ob = new ImageOb("./src/images/waking/gif2small.gif", 496, 278, this.mainDiv); this.fadeItems.push(this.ob.container);
-      this.ob = new ImageOb("./src/images/waking/wakingSplash.png", 1000, 550, this.mainDiv); this.fadeItems.push(this.ob.container);
-      this.ob = new ImageOb("./src/images/waking/waking2.png", 1000, 470, this.mainDiv); this.fadeItems.push(this.ob.container);
-      this.ob = new ImageOb("./src/images/waking/waking9.png", 1000, 470, this.mainDiv); this.fadeItems.push(this.ob.container);
-      this.ob = new ImageOb("./src/images/waking/waking6.png", 1000, 550, this.mainDiv); this.fadeItems.push(this.ob.container);
-      // this.ob = new ImageOb("./src/images/waking/waking3.jpg", 1000, 470, this.mainDiv); this.fadeItems.push(this.ob.container);
-      // this.ob = new ImageOb("./src/images/waking/waking7.png", 1000, 470, this.mainDiv); this.fadeItems.push(this.ob.container);
-      this.ob = new ImageOb("./src/images/waking/waking8.png", 1000, 470, this.mainDiv); this.fadeItems.push(this.ob.container);
-      this.ob = new ImageOb("./src/images/waking/waking5.png", 1000, 470, this.mainDiv); this.fadeItems.push(this.ob.container);
-
-      this.createSpacer(30 , this.mainDiv);
-
-      this.ob = this.createIcon("./src/images/symbols/tri.svg", this.mainDiv); this.fadeItems.push(this.ob);
-      
-      this.createSpacer(220 , this.mainDiv);
-
-      //--------------------------------------------------------------------------------------------------------------
-
-      this.ob = this.createTitle("GAGGIA", this.mainDiv);  this.fadeItems.push(this.ob); this.ob.id = "gaggiaSection";
-
-      this.createNewLine(this.mainDiv);
-
-      this.ob = this.createDisc("Responsive Website - WebGL / three.js", this.mainDiv);  this.fadeItems.push(this.ob);
-
-      this.createYoutubeEmbed("https://www.youtube.com/embed/GNEMO4_y7M8", this.mainDiv); this.fadeItems.push(this.ob);this.createSpacer(30 , this.mainDiv);
-
-      this.ob = this.createIcon("./src/images/symbols/tri.svg", this.mainDiv); this.fadeItems.push(this.ob);
-      
-      this.createSpacer(36 , this.mainDiv);
-
-      this.createNewLine(this.mainDiv);
-
-      this.ob = new ImageOb("./src/images/gaggia/gaggia1.png", 1000, 500, this.mainDiv); this.fadeItems.push(this.ob.container);
-      this.ob = new ImageOb("./src/images/gaggia/gaggia2.png", 1000, 500, this.mainDiv); this.fadeItems.push(this.ob.container);
-      this.ob = new ImageOb("./src/images/gaggia/gaggia3.png", 1000, 500, this.mainDiv); this.fadeItems.push(this.ob.container);
-
-      //--------------------------------------------------------------------------------------------------------------
-
-      this.secOffset = 150;
-
       document.getElementById("reelButton").addEventListener("click", (event) => {
 
         event.preventDefault();
-        window.scrollTo({top: 0, behavior: 'smooth'});
+        this.toSection = "reel";
+        this.action = "fade";
 
       });
 
-      this.wakingDown = document.getElementById('wakingSection').offsetTop - this.secOffset;
       document.getElementById("wakingButton").addEventListener("click", (event) => {
 
         event.preventDefault();
-        window.scrollTo({top: this.wakingDown*2.5, behavior: 'smooth'});
+        this.toSection = "waking";
+        this.action = "fade";
 
       });
 
-      this.gaggiaDown = document.getElementById('gaggiaSection').offsetTop - this.secOffset;
       document.getElementById("gaggiaButton").addEventListener("click", (event) => {
 
         event.preventDefault();
-        window.scrollTo({ top: this.gaggiaDown*2.5,behavior: 'smooth' });
+        this.toSection = "gaggia";
+        this.action = "fade";
 
       });
 
-      //--------------------------------------------------------------------------------------------------------------
+      document.getElementById("continueButton").addEventListener("click", (event) => {
+
+        event.preventDefault();
+        this.toSection = "continue";
+        this.action = "fade";
+
+      });
+
+      document.getElementById("perfectStrangersButton").addEventListener("click", (event) => {
+
+        event.preventDefault();
+        this.toSection = "perfectstrangers";
+        this.action = "fade";
+
+      });
+
+      document.getElementById("printButton").addEventListener("click", (event) => {
+
+        event.preventDefault();
+        this.toSection = "print";
+        this.action = "fade";
+
+      });
+
+      //---------------------------------------------------------------------------------------------------------------------------------------
+      
+      this.fadeItems = [
+        ...this.mainDiv.querySelectorAll('.linkDiv'),
+        ...this.mainDiv.querySelectorAll('.textDiv'),
+        ...this.mainDiv.querySelectorAll('.imageCont'),
+        ...this.mainDiv.querySelectorAll('.divHalf')
+      ];
 
       this.fadeItems.forEach((myOb) => {
         myOb.showing=false;
         myOb.style.opacity=0;
       });
 
-      // this.ob.style.zIndex=1000;
+      //--------------------------------------------------------------------------------------------------------------
 
-    }
+      this.setPage("print")
 
-    createTitle(text, parent){
+      this.scrollSpeed=1;
+      this.myScroll=0;
+      this.count=0;
 
-      var myTitle = document.createElement("div"); myTitle.textContent = text; myTitle.classList.add("t1"); parent.appendChild(myTitle);
-
-      return myTitle;
-
-    }
-
-    createDisc(text, parent){
-
-      var myDisc = document.createElement("div"); myDisc.textContent = text; myDisc.classList.add("t2"); parent.appendChild(myDisc);
-
-      return myDisc;
-
-    }
-
-    createNewLine(parent) {
-      let newLine = document.createElement("div");
-      newLine.style.width = "100%"; 
-      newLine.style.height = "0px"; 
-      parent.appendChild(newLine);
-    }
-
-    createSpacer(height, parent){
-
-      var mySpacer = document.createElement("div");  mySpacer.style.height = height+"px"; parent.appendChild(mySpacer);
-
-      return mySpacer;
-
-    }
-
-    createIcon(src, parent) {
-      const container = document.createElement("div");
-      container.classList.add("iconContainer");
-  
-      const img = document.createElement("img");
-      img.src = src;
-      img.classList.add("iconImage");
-  
-      container.appendChild(img);
-      parent.appendChild(container);
-  
-      return container;
-    }
-
-    createYoutubeEmbed(url, parent) {
-      const iframe = document.createElement("iframe");
-      iframe.src = url;
-      iframe.classList.add("youtubeEmbed"); 
-      iframe.setAttribute("frameborder", "0");
-      iframe.setAttribute("allowfullscreen", "true");
-      parent.appendChild(iframe);
-      return iframe;
     }
 
     update(){
 
-      // cursor
-
-      //---------------------------------------------------------------------------------------------------------------------------------------
-
-      this.cursorX = this.e.u.lerp(this.cursorX, this.targetCursorX, 0.15);
-      this.cursorY = this.e.u.lerp(this.cursorY, this.targetCursorY, 0.15);
-
-      this.cursor.style.transform = `translate(${this.cursorX}px, ${this.cursorY}px)`;
-
-      this.cursorX2 = this.e.u.lerp(this.cursorX2, this.targetCursorX2, 0.08);
-      this.cursorY2 = this.e.u.lerp(this.cursorY2, this.targetCursorY2, 0.08);
-
-      this.cursor2.style.transform = `translate(${this.cursorX2}px, ${this.cursorY2}px)`;
-
-      //---------------------------------------------------------------------------------------------------------------------------------------
-
-      // scroll
-
+      // smooth scroll
+      
       this.myScroll = this.e.u.lerp( this.myScroll, document.documentElement.scrollTop, .1 );
-      this.mainDiv.style.transform = `translateX(-50%) translateY(${-this.myScroll/2.5}px)`;
+      this.mainDiv.style.transform = `translateY(${-this.myScroll/this.scrollSpeed}px)`;
 
-      // console.log(document.documentElement.scrollTop)
+      // set height setter
 
-      //---------------------------------------------------------------------------------------------------------------------------------------
+      this.heightSetter.style.height = `${this.mainDiv.scrollHeight}px`;
 
-      this.showReelScroll=100;
+      if(this.action==="wait"){
 
-      if(this.myScroll>this.showReelScroll && this.showReel===true){
+        //
 
-        gsap.killTweensOf(this.reel);
-        gsap.to(this.reel, { duration: .25, opacity: 0, ease: "sine.out" });
-        this.showReel=false;
+      }else if(this.action==="fade"){
 
-      }else if(this.myScroll<=this.showReelScroll && this.showReel===false){
+        gsap.killTweensOf(this.mainDiv);
+        gsap.to(this.mainDiv, { duration: .25, opacity: 0, ease: "linear" });
 
-        gsap.killTweensOf(this.reel);
-        gsap.to(this.reel, { duration: .25, opacity: 1, ease: "sine.out" });
-        this.showReel=true;
+        this.action="fade wait"
+
+      }else if(this.action==="fade wait"){
+
+        this.count+=this.e.dt;
+
+        if(this.count>.25){
+          this.count=0;
+          this.action="load page";
+        }
+
+      }else if(this.action==="load page"){
+
+        window.scrollTo({top: 0 });
+        this.myScroll = 0;
+
+        console.log(this.toSection);
+
+        this.setPage(this.toSection)
+
+        gsap.killTweensOf(this.mainDiv);
+        gsap.to(this.mainDiv, { duration: .5, opacity: 1, delay:.5, ease: "linear" });
+
+        this.count=0;
+        this.action="wait";
 
       }
 
-      if(this.reel.style.opacity==="0"){
-
-          this.reel.style.pointerEvents="none"
-
-          if(this.reel.readyForReload===true){
-            let src = this.reel.src;
-            this.reel.src = "";
-            this.reel.src = src;
-            this.reel.readyForReload=false;
-          }
-          
-      }else{
-
-        this.reel.style.pointerEvents="auto"
-        this.reel.readyForReload=true;
-
-      }
-
-      //---------------------------------------------------------------------------------------------------------------------------------------
+      //---------------------------------------------------------------
 
       this.windowHeight = window.innerHeight;
 
-      for(var i=0; i<this.fadeItems.length; i++){
-
-        var item = this.fadeItems[i];
-
+      for (let i = 0; i < this.fadeItems.length; i++) {
+        const item = this.fadeItems[i];
         const rect = item.getBoundingClientRect();
-        const isVisible = rect.top < this.windowHeight-100;
-
-        if (isVisible===false && item.showing===false) {
-
-          gsap.killTweensOf(item);
-          gsap.to(item, { duration: .5, delay: .2, opacity: 0, ease: "sine.out" });
-          item.showing=true;
-
-        } else if(isVisible===true && item.showing===true){
-              
+        const isVisible = rect.top < this.windowHeight - 100;
+      
+        if (isVisible && !item.showing) {
           gsap.killTweensOf(item);
           gsap.to(item, { duration: .5, delay: .2, opacity: 1, ease: "sine.out" });
-          item.showing=false;
-
+          item.showing = true;
+        } else if (!isVisible && item.showing) {
+          gsap.killTweensOf(item);
+          gsap.to(item, { duration: .5, delay: .2, opacity: 0, ease: "sine.out" });
+          item.showing = false;
         }
-
-      };
-
-      //---------------------------------------------------------------------------------------------------------------------------------------
-
-      // console.log(document.documentElement.scrollTop)
-        
-      this.mixer()
+      }
 
     }
 
-    mixer(){
+    setPage(page) {
+      fetch("/"+page+".html")
 
-      if(document.getElementById("mix").checked === true){
-  
-          //-------------------------------------
-  
-          var c1_H = document.getElementById("c1_H").value;
-          var c1_S = document.getElementById("c1_S").value;
-          var c1_L = document.getElementById("c1_L").value;
-  
-          document.getElementById("c1_Color").value = this.e.u.hslToHex(c1_H,c1_S,c1_L);
-          // this.rig.material.color.setHex( "0x"+this.e.u.hslToHex(c1_H,c1_S,c1_L) );
-  
-          //-------------------------------------
-  
-          var c2_H = document.getElementById("c2_H").value;
-          var c2_S = document.getElementById("c2_S").value;
-          var c2_L = document.getElementById("c2_L").value;
-  
-          document.getElementById("c2_Color").value = this.e.u.hslToHex(c2_H,c2_S,c2_L);
-          // this.roofBars.material.color.setHex( "0x"+this.e.u.hslToHex(c2_H,c2_S,c2_L) );
-          
-          //-------------------------------------
-  
-          var c3_H = document.getElementById("c3_H").value;
-          var c3_S = document.getElementById("c3_S").value;
-          var c3_L = document.getElementById("c3_L").value;
-  
-          document.getElementById("c3_Color").value = this.e.u.hslToHex(c3_H,c3_S,c3_L);
-          // this.roofEdge.material.color.setHex( "0x"+this.e.u.hslToHex(c3_H,c3_S,c3_L) );
-          
-          //-------------------------------------
-  
-          var c4_H = document.getElementById("c4_H").value;
-          var c4_S = document.getElementById("c4_S").value;
-          var c4_L = document.getElementById("c4_L").value;
-  
-          document.getElementById("c4_Color").value = this.e.u.hslToHex(c4_H,c4_S,c4_L);
-          // this.ambLight.color.setHex( "0x"+this.e.u.hslToHex(c4_H,c4_S,c4_L) );
-  
-          //-------------------------------------
-  
-          var c5_H = document.getElementById("c5_H").value;
-          var c5_S = document.getElementById("c5_S").value;
-          var c5_L = document.getElementById("c5_L").value;
-  
-          document.getElementById("c5_Color").value = this.e.u.hslToHex(c5_H,c5_S,c5_L);
-  
-          //-------------------------------------
-  
-          var num1 = document.getElementById("num1").value;
-          var num2 = document.getElementById("num2").value;
-          var num3 = document.getElementById("num3").value;
-  
-          // this.dl_shad.position.x = num1;
-          // this.dl_shad.position.z = num2;
-          // this.dl_shad.position.y = num3;
-  
-      }
+        .then(response => response.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const content = doc.querySelector('#container'); // or another container from waking.html
+          document.getElementById('mainDiv').innerHTML = content.innerHTML;
+
+          this.fadeItems = [
+            ...this.mainDiv.querySelectorAll('.linkDiv'),
+            ...this.mainDiv.querySelectorAll('.textDiv'),
+            ...this.mainDiv.querySelectorAll('.imageCont'),
+            ...this.mainDiv.querySelectorAll('.imageContHalf')
+          ];
+    
+          this.fadeItems.forEach((item) => {
+            item.showing = false;
+            item.style.opacity = 0;
+          });
+        })
+        .catch(err => console.error(err));
+    }
+    
+    mixer(){
 
     }
 

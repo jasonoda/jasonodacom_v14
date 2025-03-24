@@ -28,5 +28,13 @@
     "copy-webpack-plugin": "^12.0.2",
     "webpack-dev-server": "^5.2.0",
     "webpack-obfuscator": "^3.5.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasonoda/jasonodacom_v14.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jasonoda/jasonodacom_v14/issues"
+  },
+  "homepage": "https://github.com/jasonoda/jasonodacom_v14#readme"
 }

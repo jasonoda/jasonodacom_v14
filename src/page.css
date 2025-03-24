@@ -1,0 +1,363 @@
+* {
+    box-sizing: border-box;
+}
+
+/* ------------------------------fonts------------------------------ */
+
+.regularFont {
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: rgb(212, 212, 212);
+    padding-left: 14px;
+}
+  
+.scriptFont {
+    font-family: "IM Fell English", serif;
+    font-size: 16px;
+    color: #cccccc;
+    letter-spacing: 1px;
+    font-style: italic;
+}
+
+.serifFont{
+    font-family: "Radley", serif;
+    font-size: 13px;
+    color: rgb(212, 212, 212);;
+    letter-spacing: 0px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+}
+
+.pageLink {
+    font-family: "Rajdhani", sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: rgb(212, 212, 212);
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.pressLink {
+    font-family: "Rajdhani", sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: rgb(212, 212, 212);
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+.footerFont{
+    font-family: "Abel", serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: rgb(212, 212, 212);
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.headerFont{
+    font-family: "Reem Kufi", serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: rgb(212, 212, 212);
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: 5px;
+    margin-left: 5px;
+    /* padding-bottom: 15px; */
+}
+
+/* ------------------------------parts------------------------------ */
+
+#container {
+    width: 100%;
+    height: 100%;
+}
+
+#container900 {
+    width: 100%;
+    height: 100%;
+    height: 500px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.greyLine {
+    width: 100%;
+    border-top: 1px solid grey;
+    background-color: grey;
+    margin-top: 4px;
+    margin-bottom: 6px;
+    z-index: 10;
+}
+  
+.imageCont{
+    display: block;
+}
+  
+.imageSplit{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+  
+.imageContHalf {
+    display: flex;
+    gap: 4px;
+}
+  
+.imageFull {
+    width: 100%;
+    max-width: 900px;
+
+    float: none;
+
+    overflow: hidden;
+}
+
+.imageHalf {
+    width: 50%;
+    max-width: 450px;
+  
+    /* float: left; */
+    
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.imagePart {
+    max-width: 450px;
+  
+    /* float: left;
+     */
+    overflow: hidden;
+    margin-bottom: 5px;
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+
+.textDiv {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-top: 7px;
+    margin-bottom: 9px;
+    z-index: 10000;
+}
+
+/* ------------------------------video------------------------------ */
+
+.reelContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.reelContainer iframe {
+    width: 100%;
+    max-width: 900px;
+    aspect-ratio: 16 / 9;
+    border: none;
+    border-radius: 8px;
+    border: 1px solid grey;
+}
+
+.videoContainer {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .videoInner {
+    max-width: 900px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .video {
+    width: 100%;
+    height: 100%;
+  }
+  
+/* ------------------------------add ons------------------------------ */
+
+.lineBorders{
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    width: 100%;
+    display: block;
+}
+  
+.thumb {
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+}
+  
+.greyBorder{
+    border: 1px solid grey;
+}
+
+.center{
+    text-align: center;
+}
+
+.justify{
+    text-align: justify;
+}
+
+.linkDiv{
+    text-align: center;
+}
+
+.topSpacer {
+    position: relative;
+    display: flex;
+    padding: 45px;
+  }
+    
+.spacer2 {
+    position: relative;
+    display: flex;
+    padding: 2px;
+  }
+    
+.spacer10 {
+    position: relative;
+    display: flex;
+    padding: 10px;
+}
+
+/* ------------------------------specail------------------------------ */
+
+.characterBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contCharacter{
+    height: 250px;
+}
+
+/* ------------------------------perfect strangers------------------------------ */
+
+.ps-font1{
+    font-family: "Rajdhani", sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: rgb(212, 212, 212);
+}
+
+.ps-font2{
+    font-family: "Rajdhani", sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: rgb(212, 212, 212);
+}
+
+.ps-container {
+    display: flex;
+    width: 100%;
+    height: 420px;
+}
+
+.ps-column {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 100%;
+}
+
+.ps-topDiv {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.ps-topDiv img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.ps-textContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ps-topText {
+    
+}
+
+.ps-bottomText {
+    
+}
+
+.ps-bottomDiv {
+    margin-top: 10px;
+    text-align: justify;
+}
+
+/* ------------------------------mobile------------------------------ */
+
+@media (max-width: 715px) {
+    .textDiv {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+    .lineBorders{
+        border-top: 0px solid grey;
+        border-bottom: 0px solid grey;
+    }
+    .image900 {
+        -moz-border-radius: 0px;
+        -webkit-border-radius: 0px;
+        border-radius: 0px;
+    }
+    .thumb {
+        -moz-border-radius: 0px;
+        -webkit-border-radius: 0px;
+        border-radius: 0px;
+    }
+    .imageContHalf {
+        flex-direction: column;
+    }
+    .imageHalf{
+        width: 100%;
+    }
+    .imagePart{
+        display: none;
+    }
+    .greyBorder{
+        border: 0px solid grey;
+    }
+    
+}
+
+  

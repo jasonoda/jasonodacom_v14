@@ -99,6 +99,12 @@ module.exports = {
         { from: 'src/images', to: 'src/images' },
         { from: 'src/sounds', to: 'src/sounds' },
         { from: 'src/models', to: 'src/models' },
+        { from: 'src/reel.html', to: 'reel.html' },
+        { from: 'src/waking.html', to: 'waking.html' },
+        { from: 'src/gaggia.html', to: 'gaggia.html' },
+        { from: 'src/continue.html', to: 'continue.html' },
+        { from: 'src/perfectstrangers.html', to: 'perfectstrangers.html' },
+        { from: 'src/print.html', to: 'print.html' },
       ],
     }),
     new AssetsPlugin({
