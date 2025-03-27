@@ -108,6 +108,38 @@ export class Scene {
 
       });
 
+      document.getElementById("schneiderButton").addEventListener("click", (event) => {
+
+        event.preventDefault();
+        this.toSection = "schneider";
+        this.action = "fade";
+
+      });
+
+      document.getElementById("arcadeButton").addEventListener("click", (event) => {
+
+        event.preventDefault();
+        this.toSection = "arcade";
+        this.action = "fade";
+
+      });
+
+      document.getElementById("musicButton").addEventListener("click", (event) => {
+
+        event.preventDefault();
+        this.toSection = "music";
+        this.action = "fade";
+
+      });
+
+      document.getElementById("advergamesButton").addEventListener("click", (event) => {
+
+        event.preventDefault();
+        this.toSection = "advergames";
+        this.action = "fade";
+
+      });
+
       document.getElementById("continueButton").addEventListener("click", (event) => {
 
         event.preventDefault();
@@ -132,13 +164,22 @@ export class Scene {
 
       });
 
+      // this.bgCont = 
+
+      // window.addEventListener('scroll', () => {
+      //   this.bgCont.style.height = `${this.mainDiv.scrollHeight}px`;
+      // });
+
       //---------------------------------------------------------------------------------------------------------------------------------------
       
       this.fadeItems = [
         ...this.mainDiv.querySelectorAll('.linkDiv'),
         ...this.mainDiv.querySelectorAll('.textDiv'),
         ...this.mainDiv.querySelectorAll('.imageCont'),
-        ...this.mainDiv.querySelectorAll('.divHalf')
+        ...this.mainDiv.querySelectorAll('.imageDiv'),
+        ...this.mainDiv.querySelectorAll('.divHalf'),
+        ...this.mainDiv.querySelectorAll('.dbar-parent'),
+        ...this.mainDiv.querySelectorAll('.videoContainer')
       ];
 
       this.fadeItems.forEach((myOb) => {
@@ -148,7 +189,7 @@ export class Scene {
 
       //--------------------------------------------------------------------------------------------------------------
 
-      this.setPage("print")
+      this.setPage("reel")
 
       this.scrollSpeed=1;
       this.myScroll=0;
@@ -215,11 +256,11 @@ export class Scene {
       
         if (isVisible && !item.showing) {
           gsap.killTweensOf(item);
-          gsap.to(item, { duration: .5, delay: .2, opacity: 1, ease: "sine.out" });
+          gsap.to(item, { duration: .5, delay: .12, opacity: 1, ease: "sine.out" });
           item.showing = true;
         } else if (!isVisible && item.showing) {
           gsap.killTweensOf(item);
-          gsap.to(item, { duration: .5, delay: .2, opacity: 0, ease: "sine.out" });
+          gsap.to(item, { duration: .5, delay: .12, opacity: 0, ease: "sine.out" });
           item.showing = false;
         }
       }
@@ -240,7 +281,15 @@ export class Scene {
             ...this.mainDiv.querySelectorAll('.linkDiv'),
             ...this.mainDiv.querySelectorAll('.textDiv'),
             ...this.mainDiv.querySelectorAll('.imageCont'),
-            ...this.mainDiv.querySelectorAll('.imageContHalf')
+            ...this.mainDiv.querySelectorAll('.imageContHalf'),
+            ...this.mainDiv.querySelectorAll('.imageSplit'),
+            ...this.mainDiv.querySelectorAll('.textDivPrint2'),
+            ...this.mainDiv.querySelectorAll('.imageDiv500'),
+            ...this.mainDiv.querySelectorAll('.imageDiv'),
+            ...this.mainDiv.querySelectorAll('.divHalf'),
+            ...this.mainDiv.querySelectorAll('.dbar-parent'),
+            ...this.mainDiv.querySelectorAll('.videoContainer'),
+            ...this.mainDiv.querySelectorAll('.topDiv')
           ];
     
           this.fadeItems.forEach((item) => {
