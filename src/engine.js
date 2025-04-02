@@ -32,10 +32,6 @@ export default class Engine{
 
     update(){
 
-        // document.documentElement.scrollTop = 0;
-        // document.body.scrollTop = 0;
-        // window.scrollTo(0, 0);
-
         //---deltatime--------------------------------------------------------------------------------------------------------------
 
         var currentTime = new Date().getTime();
@@ -45,9 +41,7 @@ export default class Engine{
         }
         this.lastTime = currentTime;
 
-        document.getElementById("feedback").innerHTML = this.action;
-
-        // console.log(this.action);
+        document.getElementById("feedback").innerHTML = this.action +" / "+ this.scene.action;
 
         if(this.action==="set up"){
 
@@ -103,7 +97,6 @@ export default class Engine{
             this.renderer.domElement.style.position="absolute"
             this.renderer.domElement.style.zIndex="2";
             this.renderer.domElement.style.display="none";
-            // this.renderer.domElement.style.border="2px solid red";
 
             //---end--------------------------------------------------------------------------------------------------------------
 
@@ -111,17 +104,10 @@ export default class Engine{
 
         }else if(this.action==="load images"){
 
-            // load 2d images
-
             this.ui.load();
-
             this.action="wait for images";
 
         }else if(this.action==="wait for images"){
-
-            // wait for 2d images
-
-            console.log(this.ui.isLoaded_UI)
 
             if(this.ui.isLoaded_UI===true){
                 this.action="load 3d";
@@ -129,24 +115,16 @@ export default class Engine{
 
         }else if(this.action==="load 3d"){
 
-            // load 3d assets
-
             this.loader.load();
             this.action="loading 3d";
 
         }else if(this.action==="loading 3d"){
-
-            // wait for 3d assets
-
-            // console.log(this.loader.isLoaded_3DTEXTURES+" / "+this.loader.isLoaded_3D)
 
             if(this.loader.isLoaded_3DTEXTURES===true && this.loader.isLoaded_3D===true && this.loader.isLoaded_CUBE===true){
                 this.action="wait before build";
             }
 
         }else if(this.action==="wait before build"){
-
-            // wait before build
 
             this.count+=this.dt;
             if(this.count>.1){
@@ -156,28 +134,17 @@ export default class Engine{
 
         }else if(this.action==="build"){
 
-            // build everything here
-
-            // add 3d dom element to page
-
             document.body.appendChild(this.renderer.domElement);
             this.renderer.domElement.style.pointerEvents="none";
 
-            // call builds
-
             this.scene.buildScene();
-            // this.ui.setUp2();
-
-            // add resizer
 
             window.addEventListener("resize", () => {
                 this.resize3D();
             })
 
-            // end
-
-            this.loadBack=1;
-            this.loadWords=1;
+            // this.loadBack=1;
+            // this.loadWords=1;
 
             this.count=0;
             this.action="wait";
@@ -186,8 +153,8 @@ export default class Engine{
 
             // fade out loading graphic
 
-            this.loadWords-=this.dt;
-            document.getElementById("loadingImage").style.opacity = this.loadWords+""
+            // this.loadWords-=this.dt;
+            // document.getElementById("loadingImage").style.opacity = this.loadWords+""
 
             // loop
 
@@ -200,17 +167,18 @@ export default class Engine{
             if(this.count>1){
                 this.count=0;
                 this.action="go"
+                this.scene.action="start"
             }
 
         }else if(this.action==="go"){
 
             // fade out loading cover
 
-            this.loadBack-=this.dt;
-            if(this.loadBack.opacity<0){
-                this.loadBack.opacity=0;
-            }
-            document.getElementById("loadingBack").style.opacity = this.loadBack+""
+            // this.loadBack-=this.dt;
+            // if(this.loadBack.opacity<0){
+            //     this.loadBack.opacity=0;
+            // }
+            // document.getElementById("loadingBack").style.opacity = this.loadBack+""
 
             // loops
 

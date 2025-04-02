@@ -164,12 +164,6 @@ export class Scene {
 
       });
 
-      // this.bgCont = 
-
-      // window.addEventListener('scroll', () => {
-      //   this.bgCont.style.height = `${this.mainDiv.scrollHeight}px`;
-      // });
-
       //---------------------------------------------------------------------------------------------------------------------------------------
       
       this.fadeItems = [
@@ -189,7 +183,7 @@ export class Scene {
 
       //--------------------------------------------------------------------------------------------------------------
 
-      this.setPage("reel")
+      // this.setPage("reel")
 
       this.scrollSpeed=1;
       this.myScroll=0;
@@ -208,9 +202,99 @@ export class Scene {
 
       this.heightSetter.style.height = `${this.mainDiv.scrollHeight}px`;
 
+      // actions
+
       if(this.action==="wait"){
 
         //
+
+      }else if(this.action==="start"){
+
+        this.action="show logo";
+
+      }else if(this.action==="show logo"){
+
+        this.centerLogo = document.createElement('object');
+        this.centerLogo.type = 'image/svg+xml';
+        this.centerLogo.data = 'src/images/logo2.svg';
+        this.centerLogo.id = 'centerLogo';
+    
+        document.body.appendChild(this.centerLogo);
+
+        this.count = 0;
+        this.action = "show logo wait";
+
+      }else if(this.action==="show logo wait"){
+
+        this.count+=this.e.dt;
+        if(this.count>4){
+
+          gsap.to(this.centerLogo, { duration: 1, opacity: 0, ease: "linear" });
+
+          this.count=0;
+          this.action="hide logo wait";
+
+        }
+
+      }else if(this.action==="hide logo wait"){
+
+        this.count+=this.e.dt;
+        if(this.count>1){
+
+          this.count=0;
+          this.action="show bar";
+
+        }
+
+      }else if(this.action==="show bar"){
+
+        document.getElementById("topBar").style.height = "0px";
+        gsap.to(document.getElementById("topBar"), { duration: .75, height: "50px", ease: "quint.inOut" });
+
+        // document.getElementById("bgCont").style.height = "0%";
+        // gsap.to(document.getElementById("bgCont"), { duration: .25, delay: 1, height: "100%", ease: "linear" });
+        // gsap.to(document.getElementById("bgCont"), { duration: .25, delay: 1, opacity: "100%", ease: "linear" });
+
+        this.action="show bar wait";
+
+      }else if(this.action==="show bar wait"){
+
+        this.count+=this.e.dt;
+
+        if(this.count>.75){
+          this.count=0;
+          this.action="show buttons";
+        }
+
+      }else if(this.action==="show buttons"){
+
+        document.getElementById("topBarGrad").style.opacity = "0";
+        gsap.to(document.getElementById("topBarGrad"), { duration: .25, opacity: 1, ease: "linear" });
+
+        gsap.to(document.getElementById("logo"), { duration: .25, opacity: 1, ease: "linear" });
+
+        this.linkButtons = Array.from(document.querySelectorAll('.linkButton'));
+        this.linkButtons.push(document.getElementById("tr1"));
+        this.linkButtons.push(document.getElementById("tr2"));
+        this.linkButtons.push(document.getElementById("tr3"));
+        this.linkButtons.push(document.getElementById("tr4"));
+        this.linkButtons.push(document.getElementById("tr5"));
+        
+        for (var i = 0; i < this.linkButtons.length; i++) {
+          
+          gsap.to(this.linkButtons[i], { duration: 0, opacity: 0});
+          gsap.to(this.linkButtons[i], { duration: 0.5, opacity: 1, delay: i * 0.05,ease: "sine.out"});
+          
+        }
+
+        gsap.to(document.getElementById("bgCont"), { duration: 1, delay: 1.5, opacity: 1});
+
+        document.getElementById("mainDivCont").style.opacity=0;
+        gsap.to(document.getElementById("mainDivCont"), { duration: 1, delay: 2, opacity: 1});
+
+        
+        this.toSection = "reel";
+        this.action="fade"
 
       }else if(this.action==="fade"){
 

@@ -21,20 +21,27 @@
     <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css"/>
     
     <title>|.OO:O.</title>
+
+    <style> body { visibility: hidden;opacity: 0;}</style>
     
 </head>
 
 <body>
 
+    <script> window.onload = function() { document.body.style.visibility = "visible"; document.body.style.opacity = "1"; document.body.style.transition = "opacity 0.3s ease-in"; }; </script>
+
     <div id="feedback">asdf</div>
 
     <!-- bar -->
 
+    <!-- <object type="image/svg+xml" data="src/images/logo2.svg" id="centerLogo"></object> -->
+
     <div id="topBar"></div>
+    <div id="topBarGrad"></div>
 
     <img id="hamburger" src="src/images/hamburger.png">
 
-    <img id="logo" src="src/images/logo2.png">
+    <img id="logo" src="src/images/logoDark.png">
 
     <div id="leftBar">
 
@@ -48,17 +55,17 @@
         <a href="#" ><span class="linkButton" id="continueButton">CONTINUE?</span></a>
         <a href="#" ><span class="linkButton" id="perfectStrangersButton">PERFECT STRANGERS</span></a>
         <a href="#" ><span class="linkButton" id="printButton">PRINT</span></a>
-        <a href="#" ><span class="linkButton" id="resumeButton">ABOUT</span></a>
+        <!-- <a href="#" ><span class="linkButton" id="resumeButton">ABOUT</span></a> -->
       
     </div>
 
     <div id="rightBar">
 
-      <span id="tr1" class="scriptFont">Jason Oda</span><span id="tr2" class="regularFont">|</span><span id="tr3" class="regularFont">DESIGNER / DEVELOPER</span><span id="tr4" class="regularFont">|</span><span id="tr5" class="regularFont">jason @ jasonoda.com</span>
+      <span id="tr1" class="scriptFont">Jason Oda</span><span id="tr2" class="regularFont">|</span><span id="tr3" class="regularFont">DESIGNER / DEVELOPER</span><span id="tr4" class="regularFont">|</span><span id="tr5" class="regularFont"><a href="mailto: jason@jasonoda.com">jason @ jasonoda.com</a></span>
 
     </div>
 
-    <div class="bgCont">
+    <div class="bgCont" id="bgCont">
       <div class="bg"></div>
     </div>
 

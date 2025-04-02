@@ -9,22 +9,32 @@
     font-weight: 600;
     font-size: 11px;
     letter-spacing: 1px;
-    color: rgb(212, 212, 212);
+    color: #666666;
     padding-left: 14px;
 }
   
 .scriptFont {
     font-family: "IM Fell English", serif;
     font-size: 16px;
-    color: #cccccc;
-    letter-spacing: 1px;
+    color: #666666;
+    /* letter-spacing: 1px; */
     font-style: italic;
 }
 
+.italicScript {
+    font-family: "IM Fell English", serif;
+    font-size: 15px;
+    color: #cccccc;
+    letter-spacing: 0px;
+    line-height: 20px;
+    font-style: italic;
+    margin-top: 0px;
+  }
+  
 .serifFont{
     font-family: "Radley", serif;
     font-size: 13px;
-    color: rgb(212, 212, 212);;
+    color: #cccccc;
     letter-spacing: 0px;
     margin-top: 8px;
     margin-bottom: 16px;
@@ -34,7 +44,7 @@
     font-family: "Rajdhani", sans-serif;
     font-size: 20px;
     letter-spacing: 1px;
-    color: rgb(212, 212, 212);
+    color: #cccccc;
     margin-top: 5px;
     margin-bottom: 5px;
     margin-right: 5px;
@@ -45,7 +55,7 @@
     font-family: "Rajdhani", sans-serif;
     font-size: 14px;
     letter-spacing: 1px;
-    color: rgb(212, 212, 212);
+    color: #cccccc;
     margin-top: 5px;
     margin-bottom: 5px;
     margin-right: 2px;
@@ -56,7 +66,7 @@
     font-family: "Abel", serif;
     font-size: 18px;
     letter-spacing: 1px;
-    color: rgb(212, 212, 212);
+    color: #cccccc;
     margin-top: 5px;
     margin-bottom: 5px;
     margin-right: 5px;
@@ -66,15 +76,37 @@
 .headerFont{
     font-family: "Josefin Sans", serif;
     font-size: 15px;
-    font-weight: 300;
-    letter-spacing: 1px;
-    color: rgb(212, 212, 212);
+    font-weight: 600;
+    /* letter-spacing: .5px; */
+    color: #cccccc;
     margin-top: 15px;
     margin-bottom: 5px;
     margin-right: 5px;
     margin-left: 5px;
     /* padding-bottom: 15px; */
 }
+
+
+/* a:link {
+    text-decoration: none;
+    color: #cccccc;
+  }
+  
+  a:visited {
+    text-decoration: none;
+    color: #cccccc;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+    color: #cccccc;
+  }
+  
+  a:active {
+    text-decoration: underline;
+    color: #cccccc;
+  } */
+  
 
 /* ------------------------------parts------------------------------ */
 
@@ -96,8 +128,8 @@
 
 .greyLine {
     width: 100%;
-    border-top: 1px solid grey;
-    background-color: grey;
+    border-top: 1px solid #333333;
+    background-color: #333333;
     margin-top: 4px;
     margin-bottom: 6px;
     z-index: 10;
@@ -183,8 +215,8 @@
     max-width: 900px;
     aspect-ratio: 16 / 9;
     border: none;
-    border-radius: 8px;
-    /* border: 1px solid grey; */
+    /* border-radius: 8px; */
+    border: 1px solid #333333;
 }
 
 .videoContainer {
@@ -194,6 +226,7 @@
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
+    border: 1px solid #333333;
   }
   
   .videoInner {
@@ -214,8 +247,8 @@
 /* ------------------------------add ons------------------------------ */
 
 .lineBorders{
-    border-top: 1px solid grey;
-    border-bottom: 1px solid grey;
+    border-top: 1px solid #333333;
+    border-bottom: 1px solid #333333;
     width: 100%;
     display: block;
 }
@@ -276,27 +309,59 @@
 
 .dbar-projectFont{
     font-family: "Rajdhani", sans-serif;
-    font-weight: 800;
+    font-weight: 600;
     letter-spacing: 1px;
-    color: #686868;
+    color: #cccccc;
     font-size: 8pt;
     margin-right: 6px;
 }
 
 .dbar-launchFont{
     font-family: "Rajdhani", sans-serif;
-    font-weight: 800;
+    font-weight: 600;
     letter-spacing: 1px;
-    color: #686868;
+    color: #cccccc;
     font-size: 8pt;
     padding-right: 4px;
 }
+
+.dbar-link a:link, .dbar-link a:visited {
+    text-decoration: none;
+    color: #cccccc; /* Set the color for normal state */
+}
+
+.dbar-link a:hover {
+    text-decoration: underline;
+    color: #ffffff; /* Set the color when hovered */
+}
+
+.dbar-link a:active {
+    text-decoration: underline;
+    color: #ffffff; /* Same color as hover when active */
+}
+
+/* Links inside .regularFont */
+.regularFont a:link, .regularFont a:visited {
+    text-decoration: none;
+    color: #666666;  /* Color for links in regularFont */
+}
+
+.regularFont a:hover {
+    text-decoration: underline;
+    color: #ff6600;  /* Different color for hover effect */
+}
+
+.regularFont a:active {
+    text-decoration: underline;
+    color: #ff6600;  /* Same color as hover */
+}
+
 
 .dbar-formatName{
     font-family: "Josefin Sans", sans-serif;
     font-weight: 300;
     letter-spacing: 1px;
-    color: #c1c1c1;
+    color: #cccccc;
     font-size: 18pt;
     margin-right: 8px;
     transform: translateY(1px);
@@ -304,18 +369,18 @@
 
 .dbar-formatFont{
     font-family: "Rajdhani", sans-serif;
-    font-weight: 800;
+    font-weight: 600;
     letter-spacing: 1px;
-    color: #c1c1c1;
+    color: #cccccc;
     font-size: 8pt;
     margin-right: 10px;
 }
 
 .dbar-link {
     font-family: "Rajdhani", sans-serif;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 1px;
-    color: #c1c1c1;
+    color: #cccccc;
     font-size: 13pt;
     transform: translateY(-2px);
     text-decoration: none;
@@ -396,14 +461,14 @@
     font-family: "Rajdhani", sans-serif;
     font-size: 14px;
     letter-spacing: 1px;
-    color: rgb(212, 212, 212);
+    color: #cccccc;
 }
 
 .ps-font2{
     font-family: "Rajdhani", sans-serif;
     font-size: 18px;
     letter-spacing: 1px;
-    color: rgb(212, 212, 212);
+    color: #cccccc;
 }
 
 .ps-container {
