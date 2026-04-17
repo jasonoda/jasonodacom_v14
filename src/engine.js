@@ -1,8 +1,9 @@
 import * as THREE from 'three';
 
 export default class Engine{
-    constructor(input, loader, scene, sounds, utilities, ui){
+    constructor(back,input, loader, scene, sounds, utilities, ui){
 
+        this.back = back;
         this.input = input;
         this.loader = loader;
         this.s = sounds;
@@ -45,73 +46,18 @@ export default class Engine{
 
         if(this.action==="set up"){
 
-            //---3D SET UP----------------------------------------------------------------------------------------------------------------
-
-            //---scene parts--------------------------------------------------------------------------------------------------------------
-
-            this.scene3D = new THREE.Scene();
-            this.camera = new THREE.PerspectiveCamera(30,window.innerWidth/window.innerHeight,.1, 740);
-            this.scene3D.fog = new THREE.Fog(0x000000, 0, 330*1.6);
-
-            this.mainCont = new THREE.Group();
-            this.scene3D.add(this.mainCont);
-
-            //---carmera rig--------------------------------------------------------------------------------------------------------------
-
-            this.camContX = new THREE.Group();
-            this.camContY = new THREE.Group();
-            this.scene3D.add(this.camContX);
-            this.scene3D.add(this.camContY);
-
-            this.camContY.add(this.camContX)
-            this.camContX.add(this.camera);
-
-            //-----------------------
-
-            this.camera.position.z = 12;
-            this.camera.position.y = 0;
-
-            this.camContY.rotation.y = this.u.ca(45)
-            this.camContX.rotation.x = this.u.ca(-45)
-
-            //---webgl--------------------------------------------------------------------------------------------------------------
-
-            this.renderer = new THREE.WebGLRenderer({antialias:true, powerPreference: "high-performance", alpha: true})
-
-            this.renderer.setSize(window.innerWidth,window.innerHeight);
-            this.renderer.setPixelRatio(window.devicePixelRatio);
-
-            this.renderer.shadowMap.enabled = true;
-            this.renderer.shadowMapSoft = true;
-
-            this.renderer.shadowCameraNear = 3;
-            this.renderer.shadowCameraFar = this.camera.far;
-            this.renderer.shadowCameraFov = 50;
-
-            this.renderer.shadowMapBias = 0.0039;
-            this.renderer.shadowMapDarkness = 0.5;
-            this.renderer.shadowMapWidth = 2048;
-            this.renderer.shadowMapHeight = 2048;
-            this.renderer.shadowMap.type = THREE.PCFSoftShadowMap
-
-            this.renderer.domElement.style.position="absolute"
-            this.renderer.domElement.style.zIndex="2";
-            this.renderer.domElement.style.display="none";
-
-            //---end--------------------------------------------------------------------------------------------------------------
-
             this.action="load images";
 
         }else if(this.action==="load images"){
 
-            this.ui.load();
+            // this.ui.load();
             this.action="wait for images";
 
         }else if(this.action==="wait for images"){
 
-            if(this.ui.isLoaded_UI===true){
+            // if(this.ui.isLoaded_UI===true){
                 this.action="load 3d";
-            }
+            // }
 
         }else if(this.action==="load 3d"){
 
@@ -134,17 +80,12 @@ export default class Engine{
 
         }else if(this.action==="build"){
 
-            document.body.appendChild(this.renderer.domElement);
-            this.renderer.domElement.style.pointerEvents="none";
-
             this.scene.buildScene();
+            this.back.buildScene();
 
-            window.addEventListener("resize", () => {
-                this.resize3D();
-            })
-
-            // this.loadBack=1;
-            // this.loadWords=1;
+            // window.addEventListener("resize", () => {
+            //     this.resize3D();
+            // })
 
             this.count=0;
             this.action="wait";
@@ -158,8 +99,8 @@ export default class Engine{
 
             // loop
 
-            this.ui.update();
-            this.scene.update();
+            // this.ui.update();
+            // this.scene.update();
 
             // end
 
@@ -182,8 +123,9 @@ export default class Engine{
 
             // loops
 
+            this.back.update();
             this.scene.update();
-            this.ui.update();
+            // this.ui.update();
             this.render();
 
         }
@@ -194,25 +136,9 @@ export default class Engine{
         
         //---renderer--------------------------------------------------------------------------------------------------------------
 
+        this.back.renderer.render(this.back.scene3D, this.back.camera);
         // this.renderer.render(this.scene3D, this.camera);
 
-    }
-
-    resize3D(){
-
-        console.log("resize")
-    
-        var width = window.innerWidth;
-        var height = window.innerHeight;
-
-        var width = document.documentElement.clientWidth;
-        var height = document.documentElement.clientHeight;
-    
-        this.camera.aspect = width / height;
-        this.camera.updateProjectionMatrix();
-    
-        this.renderer.setSize( width, height );
-    
     }
 
 }

@@ -73,7 +73,20 @@ export class Loader{
         ],  () => this.loadCubeTexture());
 
         this.textureArray.push("blackTemp"); this.e.blackTemp = new THREE.TextureLoader().load( './src/images/black.png', this.loadTexture(this));
+        this.textureArray.push("hamburger"); this.e.hamburger = new THREE.TextureLoader().load( './src/images/hamburger.png', this.loadTexture(this));
+        this.textureArray.push("tubeTexture"); this.e.tubeTexture = new THREE.TextureLoader().load( './src/images/tubeTexture.png', this.loadTexture(this));
         // this.e.blackTemp.anisotropy = this.e.renderer.capabilities.getMaxAnisotropy();
+
+        this.textureArray.push("glint"); this.e.glintTexture = new THREE.TextureLoader().load( './src/images/glint.png', this.loadTexture(this));
+
+        // this.e.tubeTexture.repeat.x = 260;
+        // this.e.tubeTexture.repeat.x = 26;
+        // this.e.tubeTexture.repeat.y = 26;
+        this.e.tubeTexture.repeat.set(1, 1);
+        this.e.tubeTexture.wrapS = this.e.tubeTexture.wrapT = THREE.RepeatWrapping;
+        this.e.tubeTexture.minFilter = THREE.NearestFilter;
+        this.e.tubeTexture.magFilter = THREE.NearestFilter;
+        this.e.tubeTexture.generateMipmaps = false;
 
         // this.e.blackTemp.repeat.x = 260;
         // this.e.blackTemp.repeat.y = 260;

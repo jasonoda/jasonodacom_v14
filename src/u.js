@@ -6,6 +6,27 @@ export class Utilities {
         this.e=e;
     }
   
+    randomColorBetweenGoldAndRed() {
+        const gold = new THREE.Color(0xFFD700);
+        const red = new THREE.Color(0xFF3333);
+        
+        const t = Math.random(); // random number between 0 and 1
+    
+        const mixedColor = gold.clone().lerp(red, t); // linearly interpolate between gold and red
+    
+        return mixedColor;
+    }
+  
+    randomColorBetweenGoldAnd(targetHex) {
+      const gold = new THREE.Color(0xFFD700);
+      const target = new THREE.Color(targetHex);
+    
+      const t = Math.random();
+      const mixedColor = gold.clone().lerp(target, t);
+    
+      return mixedColor;
+    }
+    
     vectorToScreenPos2(ob, camera){
 
       var width = window.innerWidth;

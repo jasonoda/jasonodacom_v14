@@ -363,7 +363,7 @@ export class Scene {
 
       this.createSpacer(36 , this.mainDiv);
 
-      this.ob = this.createTitle("ADVERGAMES", this.mainDiv);  this.fadeItems.push(this.ob); this.ob.id = "advergameSection";
+      this.ob = this.createTitle("BRANDED GAMES", this.mainDiv);  this.fadeItems.push(this.ob); this.ob.id = "advergameSection";
 
       this.createSpacer(36 , this.mainDiv);
 

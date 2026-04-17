@@ -18,6 +18,24 @@ if (lifecycleEvent === 'build') {
 
 console.log(isProduction)
 
+// Section HTML: emitted to dist as `{name}.html` (direct URL access / static hosting).
+// The app loads these via imports in `src/scene.js` (PAGE_HTML). When you add a section,
+// add the file name here and wire the import + map in scene.js.
+const SECTION_PAGE_HTML = [
+  'reel',
+  'waking',
+  'gaggia',
+  'schneider',
+  'music',
+  'arcade',
+  'gamesystems',
+  'advergames',
+  'continue',
+  'perfectstrangers',
+  'print',
+  'contact',
+];
+
 // 3. Exports an object to be used as the configuration for Webpack.
 module.exports = {
 
@@ -82,6 +100,13 @@ module.exports = {
         type: 'asset/resource',
         generator: { filename: 'src/models/[name][ext]' },
       },
+      // Section HTML for scene.js PAGE_HTML imports — must be raw strings (not parsed as JS).
+      // `asset/source` was flaky with webpack-dev-server + HMR on Windows; raw-loader is reliable.
+      {
+        test: /\.html$/i,
+        exclude: [/[/\\]index\.html$/i, /node_modules/],
+        use: 'raw-loader',
+      },
     ]
   },
 
@@ -98,17 +123,12 @@ module.exports = {
       patterns: [
         { from: 'src/images', to: 'src/images' },
         { from: 'src/sounds', to: 'src/sounds' },
+        { from: 'src/videos', to: 'src/videos' },
         { from: 'src/models', to: 'src/models' },
-        { from: 'src/reel.html', to: 'reel.html' },
-        { from: 'src/waking.html', to: 'waking.html' },
-        { from: 'src/gaggia.html', to: 'gaggia.html' },
-        { from: 'src/schneider.html', to: 'schneider.html' },
-        { from: 'src/arcade.html', to: 'arcade.html' },
-        { from: 'src/music.html', to: 'music.html' },
-        { from: 'src/advergames.html', to: 'advergames.html' },
-        { from: 'src/continue.html', to: 'continue.html' },
-        { from: 'src/perfectstrangers.html', to: 'perfectstrangers.html' },
-        { from: 'src/print.html', to: 'print.html' },
+        ...SECTION_PAGE_HTML.map((name) => ({
+          from: `src/${name}.html`,
+          to: `${name}.html`,
+        })),
       ],
     }),
     new AssetsPlugin({

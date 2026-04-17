@@ -8,8 +8,29 @@ export class Input {
         this.keyLeft = false;
         this.keyUp = false;
         this.keyDown = false;
+
+        const versionOverlay = document.createElement("div");
+        versionOverlay.id = "versionOverlay";
+        versionOverlay.textContent = "v1.1";
+        versionOverlay.setAttribute("aria-hidden", "true");
+        document.body.appendChild(versionOverlay);
   
         document.addEventListener("keydown", event => {
+
+          if (event.key === "v" || event.key === "V") {
+            const t = event.target;
+            const tag = t && t.tagName;
+            if (tag === "INPUT" || tag === "TEXTAREA" || (t && t.isContentEditable)) {
+              return;
+            }
+            event.preventDefault();
+            versionOverlay.classList.toggle("is-visible");
+            versionOverlay.setAttribute(
+              "aria-hidden",
+              versionOverlay.classList.contains("is-visible") ? "false" : "true"
+            );
+            return;
+          }
   
           //---arrow keyes---------------------------------------
   
