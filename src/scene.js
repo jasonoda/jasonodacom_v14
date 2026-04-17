@@ -32,8 +32,8 @@ const PAGE_HTML = {
   contact: contactHtml
 };
 
-// Temporary dev: set to null to restore the full intro. URL ?skipIntro=1 also skips; ?skipIntro=0 forces intro.
-const SKIP_INTRO_TO_SECTION = 'gamesystems';
+// Temporary dev: set to 'gamesystems' to skip intro. URL ?skipIntro=1 also skips; ?skipIntro=0 forces intro.
+const SKIP_INTRO_TO_SECTION = null;
 
 function getSkipIntroTarget() {
   if (typeof window === 'undefined') return null;
@@ -153,6 +153,8 @@ export class Scene {
       document.getElementById('tr2'),
       document.getElementById('tr3'),
       document.getElementById('tr4'),
+      document.getElementById('tr6'),
+      document.getElementById('tr7'),
       document.getElementById('tr5')
     ];
     for (let i = 0; i < linkButtons.length; i++) {
@@ -249,6 +251,8 @@ export class Scene {
       this.linkButtons.push(document.getElementById("tr2"));
       this.linkButtons.push(document.getElementById("tr3"));
       this.linkButtons.push(document.getElementById("tr4"));
+      this.linkButtons.push(document.getElementById("tr6"));
+      this.linkButtons.push(document.getElementById("tr7"));
       this.linkButtons.push(document.getElementById("tr5"));
 
       for (var i = 0; i < this.linkButtons.length; i++) {
