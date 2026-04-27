@@ -30,15 +30,23 @@
     </div> -->
 
       <div class="reelContainer">
-        <iframe class="reelFrame"
-          src="https://www.youtube-nocookie.com/embed/jp0Av9cSgBE?rel=0"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          referrerpolicy="strict-origin-when-cross-origin">
-        </iframe>
+        <div class="reelPlayer">
+          <video
+            id="reelVideo"
+            class="reelVideo thumb"
+            src="/src/videos/reel.mp4"
+            controls
+            preload="metadata"
+            playsinline
+          ></video>
+          <div id="reelOverlay" class="reelOverlay" role="button" tabindex="0" aria-label="Play trailer">
+            <img class="reelPlaceholderImage thumb" src="/src/videos/preview.png" alt="Trailer placeholder" />
+            <div class="reelOverlayShade"></div>
+            <div class="reelOverlayPlayIcon" aria-hidden="true"></div>
+          </div>
+        </div>
       </div>
     </div>
-    
+
   </body>
 </html>

@@ -44,6 +44,12 @@ function getSkipIntroTarget() {
 }
 
 export class Scene {
+  setDocumentScrollLocked(isLocked) {
+    const value = isLocked ? 'hidden' : '';
+    document.documentElement.style.overflowY = value;
+    document.body.style.overflowY = value;
+  }
+
   setUp(e) {
     this.e = e;
     this.linkConfig = {
@@ -63,6 +69,7 @@ export class Scene {
   }
 
   buildScene() {
+    this.setDocumentScrollLocked(true);
     this.mainDiv = document.getElementById("mainDiv");
 
     this.heightSetter = document.createElement("div");
@@ -132,6 +139,7 @@ export class Scene {
   }
 
   applyPostIntroChromeLayout() {
+    this.setDocumentScrollLocked(false);
     const topBar = document.getElementById('topBar');
     if (topBar) topBar.style.height = '50px';
     const topBarGrad = document.getElementById('topBarGrad');
@@ -263,6 +271,7 @@ export class Scene {
       gsap.to(document.getElementById("bgCont"), { duration: 1, delay: 1.5, opacity: 1 });
       document.getElementById("mainDivCont").style.opacity = 0;
       gsap.to(document.getElementById("mainDivCont"), { duration: 1, delay: 2, opacity: 1 });
+      this.setDocumentScrollLocked(false);
 
       this.toSection = "reel";
       this.action = "fade"
@@ -350,6 +359,7 @@ export class Scene {
       item.style.opacity = 0;
     });
     this.setUpGameSystemsVideo();
+    this.setUpReelVideo();
   }
 
   setUpGameSystemsVideo() {
@@ -375,10 +385,10 @@ export class Scene {
       overlay.appendChild(video);
       document.body.appendChild(overlay);
 
-      overlay.addEventListener('click', (event) => {
-        if (event.target === overlay) {
-          this.closeGameSystemsVideo();
-        }
+      overlay.addEventListener('pointerup', (event) => {
+        if (!overlay.classList.contains('is-open')) return;
+        if (event.pointerType === 'mouse' && event.button !== 0) return;
+        this.closeGameSystemsVideo();
       });
     }
 
@@ -415,6 +425,36 @@ export class Scene {
       onComplete: () => {
         overlay.classList.remove('is-open');
       }
+    });
+  }
+
+  setUpReelVideo() {
+    const reelVideo = document.getElementById('reelVideo');
+    const reelOverlay = document.getElementById('reelOverlay');
+    const reelPlayer = document.querySelector('.reelPlayer');
+    if (!reelVideo || !reelOverlay || !reelPlayer || reelOverlay.dataset.bound === 'true') {
+      return;
+    }
+
+    const playReel = (event) => {
+      if (event) {
+        event.preventDefault();
+      }
+      const playPromise = reelVideo.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(() => {});
+      }
+    };
+
+    reelOverlay.dataset.bound = 'true';
+    reelOverlay.addEventListener('click', playReel);
+    reelOverlay.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        playReel(event);
+      }
+    });
+    reelVideo.addEventListener('play', () => {
+      reelPlayer.classList.add('has-started');
     });
   }
 
